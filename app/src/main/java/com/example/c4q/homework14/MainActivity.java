@@ -2,10 +2,16 @@ package com.example.c4q.homework14;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
+import com.example.c4q.homework14.controller.RecipeAdapter;
+import com.example.c4q.homework14.model.Matches;
 import com.example.c4q.homework14.model.Yummly;
 import com.example.c4q.homework14.network.YummlyService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,13 +22,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Yummly JSON?";
     private YummlyService yummlyService;
+    RecyclerView foodRecipeRecyclerView;
+    RecipeAdapter recipeAdapter;
+    List<Matches> recipeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        foodRecipeRecyclerView = findViewById(R.id.food_recipe_rv);
         connectYummlyApi();
+
     }
 
     public void connectYummlyApi() {
@@ -33,13 +44,20 @@ public class MainActivity extends AppCompatActivity {
 
         yummlyService = retrofit.create(YummlyService.class);
 
-        Call<Yummly> yummly = yummlyService.getYummly();
+        final Call<Yummly> yummly = yummlyService.getYummly();
         yummly.enqueue(new Callback<Yummly>() {
             @Override
             public void onResponse(Call<Yummly> call, Response<Yummly> response) {
-                Log.d(TAG, "onResponse: " + response.body().toString());
-                Log.d(TAG, "Recipe Name: " + response.body().getMatches().get(0).getRecipeName());
-                Log.d(TAG, "Ingredients: " + response.body().getMatches().get(0).getIngredients());
+                foodRecipeRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+                Yummly yummlyData = response.body();
+                recipeList = yummlyData.getMatches();
+                recipeAdapter = new RecipeAdapter(recipeList);
+                foodRecipeRecyclerView.setAdapter(recipeAdapter);
+
+
+//                Log.d(TAG, "onResponse: " + response.body().toString());
+//                Log.d(TAG, "Recipe Name: " + response.body().getMatches().get(0).getRecipeName());
+//                Log.d(TAG, "Ingredients: " + response.body().getMatches().get(0).getIngredients());
             }
 
             @Override

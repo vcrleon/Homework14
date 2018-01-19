@@ -57,4 +57,5 @@ public class Matches {
     public int getRating() {
         return rating;
     }
+
 }
