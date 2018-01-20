@@ -20,7 +20,7 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder {
     public RecipeViewHolder(View itemView) {
         super(itemView);
         foodImage = itemView.findViewById(R.id.food_image_view);
-        recipeName = itemView.findViewById(R.id.recipe_name_view);
+        recipeName = itemView.findViewById(R.id.food_textview);
     }
 
     public void onBind(Matches recipe) {
