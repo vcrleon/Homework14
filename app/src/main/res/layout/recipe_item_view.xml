@@ -16,14 +16,18 @@
                 android:id="@+id/food_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-
             <TextView
                 android:id="@+id/recipe_name_view"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:hint="Recipe name"/>
+                android:hint="Recipe name"
+                />
+
+
+
+
 
         </RelativeLayout>
 
