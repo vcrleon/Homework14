@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private YummlyService yummlyService;
     RecyclerView foodRecipeRecyclerView;
     RecipeAdapter recipeAdapter;
-    List<Matches> recipeList = new ArrayList<>();
+    List<Matches> yummlyList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Yummly> call, Response<Yummly> response) {
                 foodRecipeRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
                 Yummly yummlyData = response.body();
-                recipeList = yummlyData.getMatches();
-                recipeAdapter = new RecipeAdapter(recipeList);
+                yummlyList = yummlyData.getMatches();
+                recipeAdapter = new RecipeAdapter(yummlyList);
                 foodRecipeRecyclerView.setAdapter(recipeAdapter);
 
 

@@ -17,10 +17,10 @@ import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeViewHolder> {
 
-    List<Matches> recipeList;
+    List<Matches> yummlyList;
 
     public RecipeAdapter(List<Matches> recipeList) {
-        this.recipeList = recipeList;
+        this.yummlyList = recipeList;
     }
 
     @Override
@@ -31,14 +31,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeViewHolder> {
 
     @Override
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
-        Matches recipe = recipeList.get(position);
+        Matches recipe = yummlyList.get(position);
         holder.onBind(recipe);
 
     }
 
     @Override
     public int getItemCount() {
-        return recipeList.size();
+        return yummlyList.size();
     }
 
 }

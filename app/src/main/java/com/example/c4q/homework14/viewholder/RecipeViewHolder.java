@@ -25,7 +25,7 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(Matches recipe) {
         Picasso.with(itemView.getContext())
-                .load(recipe.getSmallImageUrls().get(0))
+                .load(recipe.getImageUrlsBySize().getImage())
                 .into(foodImage);
 
         recipeName.setText(recipe.getRecipeName());

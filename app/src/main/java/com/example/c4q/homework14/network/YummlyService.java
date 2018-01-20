@@ -17,5 +17,4 @@ public interface YummlyService {
     @GET("api/recipes?_app_id=" + id + "&_app_key=" + key)
     Call<Yummly> getYummly();
 
-
 }
