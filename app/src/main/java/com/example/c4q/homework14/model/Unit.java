@@ -40,4 +40,5 @@ class Unit {
     public boolean isDecimal() {
         return decimal;
     }
+
 }
