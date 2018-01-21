@@ -12,6 +12,7 @@ public class SavedItemsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_items);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        sharedPreferences.getBoolean("bookmarked_articles",false);
+        sharedPreferences.getBoolean("saves_item",false);
+
     }
 }
