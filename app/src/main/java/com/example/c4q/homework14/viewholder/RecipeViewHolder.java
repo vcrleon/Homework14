@@ -1,19 +1,28 @@
 package com.example.c4q.homework14.viewholder;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.c4q.homework14.R;
 import com.example.c4q.homework14.model.Matches;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by c4q on 1/15/18.
  */
 
 public class RecipeViewHolder extends RecyclerView.ViewHolder {
+    private SharedPreferences sharedPrefs;
+    private Button savebutton;
     private ImageView foodImage;
     private TextView recipeName;
 
@@ -21,6 +30,8 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         foodImage = itemView.findViewById(R.id.food_image_view);
         recipeName = itemView.findViewById(R.id.food_textview);
+        savebutton = itemView.findViewById(R.id.food_button);
+
     }
 
     public void onBind(Matches recipe) {
@@ -29,6 +40,28 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder {
                 .into(foodImage);
 
         recipeName.setText(recipe.getRecipeName());
+        sharedPrefs = itemView.getContext().getSharedPreferences("bookmarked_articles", Context.MODE_PRIVATE);
+        savebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                Toast.makeText(itemView.getContext(), "Item Saved", Toast.LENGTH_SHORT).show();
+
+                JSONObject bookmarkObjects = new JSONObject();
+
+                try {
+                    JSONObject object = new JSONObject();
+
+                    bookmarkObjects.put("object", object);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                editor.putString("saved", bookmarkObjects.toString()).commit();
+
+            }
+        });
 
 
     }
