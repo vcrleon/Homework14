@@ -4,21 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.example.c4q.homework14.StartActivity">
+    android:orientation="vertical"
+    tools:context="com.example.c4q.homework14.activities.StartActivity">
 
     <ImageView
         android:id="@+id/yummly_logo"
-        android:layout_gravity="center_horizontal"
         android:layout_width="300dp"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal" />
 
-    <android.support.v7.widget.SearchView
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:layout_width="300dp"
-        android:layout_height="35dp">
-    </android.support.v7.widget.SearchView>
+        android:background="@color/teal"
+        android:queryHint="Search by name, type or course"
+        android:clickable="true">
+    </SearchView>
+
+    <TextView
+        android:id="@+id/or_option_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="OR"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/find_recipes_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Find Recipes" />
 
 
 </LinearLayout>
