@@ -30,6 +30,7 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder {
 
         recipeName.setText(recipe.getRecipeName());
 
+
     }
 
 

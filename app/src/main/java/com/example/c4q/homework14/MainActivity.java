@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.c4q.homework14.controller.RecipeAdapter;
 import com.example.c4q.homework14.model.Matches;
@@ -69,4 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void saveButton(View view) {
+        for (int i = 0; i <20;  i++) {
+            Toast.makeText(this, "Item Saved!", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "saveButton: ");
+
+            
+        }
+    }
 }
