@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.SecondActivity"></activity>
+        <activity android:name=".SavedItemsActivity"></activity>
     </application>
 
 </manifest>
